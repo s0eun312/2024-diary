@@ -1,0 +1,246 @@
+.toggle-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3em;
+
+    margin-top: 8em;
+    margin-bottom: 5em;
+}
+
+.title-h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+.toggle-switch {
+    width: 13.3333vw;
+    height: 8.796vh;
+    border: 0.0521vw solid #000;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+}
+
+.knob {
+    width: 4.5833vw;
+    height: 6.204vh;
+    background-color: #474747;
+    border-radius: 3em;
+    position: absolute;
+    top: 50%;
+    left: 1.0417vw;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+}
+
+/* Toggle move */
+.toggle-switch.active .knob {
+    left: calc(100% - 5.7292vw); /* 오른쪽 이동 */
+}
+
+.cell2-img {
+    width: 28.2813vw;
+    height: 50.278vh;
+    border: 0.0521vw solid #000;
+}
+
+/* hidden */
+.hidden {
+    display: none !important;
+}
+
+/* School =========================================== */
+.school-contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8.5417vw;
+}
+
+/* Lists */
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.lists h3 {
+    font-size: 3.3em;
+}
+
+input[type="checkbox"] {
+    width: 1.4583vw;
+    height: 2.593vh;
+    position: relative;
+    margin-right: 0.5208vw;
+    appearance: none; /* 기본 체크박스 스타일 제거 */
+    -webkit-appearance: none; /* Safari 대응 */
+    outline: none;
+    border: 0.0521vw solid #000;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transition: background-color .2s ease-in;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #000;
+    border: 0.0521vw solid #000;
+}
+
+/* 체크박스 체크 마크 */
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 0.1042vw;
+    top: -0.556vh;
+    width: 0.4167vw;
+    height: 1.481vh;
+    border: solid white;
+    border-width: 0 0.1563vw 0.278vh 0;
+    transform: rotate(45deg);
+    transform-origin: bottom left;
+}
+
+/* Todolist */
+.todo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.todo-item label {
+    width: 16.4583vw;
+    height: 2.593vh;
+    display: inline-block;
+    border-bottom: 0.0521vw solid #000;
+    font-weight: 400;
+    font-size: 1.8em;
+    line-height: 1.389vh;
+}
+
+/* Checklist */
+.check {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.check-rows {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.check-item label {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+/* Timetable */
+.timetable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-left: -4vw;
+}
+.timetable div {
+    width: 20vw;
+    height: 6vh;
+    padding: .3em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1em;
+}
+
+.timetable h3 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.timetable p {
+    font-family: 'NanumBarunPen', sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #000;
+}
+
+.mon {
+    background-color: #F9E0E3;
+}
+
+.tue {
+    background-color: #F6FDD1;
+}
+
+.wen {
+    background-color: #D1FADC;
+}
+
+.thu {
+    background-color: #FAF1D0;
+}
+
+.fri {
+    background-color: #C4F7F8;
+}
+
+/* Job =========================================== */
+.job-contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8vw;
+}
+
+.work-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-state {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.6vh;
+
+    font-weight: 400;
+    font-size: 2.3em;
+}
+
+.perscent-border {
+    width: 30vw;
+    padding: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: .1em solid #000;
+}
+
+.perscent {
+    width: 0%;
+    height: 2vh;
+    background-color: #84ccff;
+    animation: fillPercent 5s ease-in-out infinite;
+}
+
+@keyframes fillPercent {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}

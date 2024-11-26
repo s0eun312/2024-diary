@@ -1,0 +1,46 @@
+/* Font */
+@font-face {
+    font-family: 'NanumBarunPen';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumBarunPen/NanumBarunPen-Regular.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumBarunPen/NanumBarunPen-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumBarunPen';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/NanumBarunPen/NanumBarunPen-Bold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/NanumBarunPen/NanumBarunPen-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'NanumBarunPen';
+    color: #000;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+
+    width: 100vw;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.backBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.backBtn:hover {
+    content: url(../public/back-2.svg);
+}
