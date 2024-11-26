@@ -14,66 +14,27 @@ h1 {
     font-weight: 700;
 }
 
-/* cell-contents */
 .cell-rows  {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 50px;
-    width: 80%;
+    width: 70%;
+    height: 300px;
     margin: 50px auto;
+    transition: grid-template-columns 0.3s ease;
 }
 
 .cells {
+    grid-column: span 4;
     border: 1px solid #000;
-    /* height: 300px; */
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .cells:hover {
-    background-color: #00000032;
+    grid-column: span 6;
 }
 
-.cell-1 {
-    grid-column: span 5;
-    grid-row: span 5;
-}
-
-.cell-2 {
+.cell-rows:hover .cells:not(:hover) {
     grid-column: span 3;
-    grid-row: span 7;
-}
-
-.cell-3 {
-    grid-column: span 4;
-    grid-row: span 6;
-}
-
-.cell-4 {
-    grid-column: span 4;
-    grid-row: span 8;
-}
-
-.cell-5 {
-    grid-column: span 3;
-    grid-row: span 5;
-}
-
-.cell-6 {
-    grid-column: span 5;
-    grid-row: span 6;
-}
-
-.cell-7 {
-    grid-column: span 5;
-    grid-row: span 6;
-}
-
-.cell-8 {
-    grid-column: span 4;
-    grid-row: span 5;
-}
-
-.cell-9 {
-    grid-column: span 3;
-    grid-row: span 6;
 }
