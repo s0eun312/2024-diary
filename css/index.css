@@ -14,26 +14,27 @@ h1 {
     font-weight: 700;
 }
 
-.cell-rows  {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 50px;
+.cell-rows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 70%;
-    height: 300px;
+    gap: 50px;
     margin: 50px auto;
 }
 
 .cells {
-    grid-column: span 4;
+    flex: 1; /* 동일한 너비 */
+    height: 300px;
     border: 1px solid #000;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .cells:hover {
-    grid-column: span 6;
+    flex: 2; /* 너비 넓어짐 */
 }
 
 .cell-rows:hover .cells:not(:hover) {
-    grid-column: span 3;
+    flex: 0.8; /* 너비 줄어듦 */
 }
