@@ -26,10 +26,11 @@ h1 {
 .cells {
     border: 1px solid #000;
     /* height: 300px; */
+    cursor: pointer;
 }
 
-cells:hover {
-    
+.cells:hover {
+    background-color: #00000032;
 }
 
 .cell-1 {
