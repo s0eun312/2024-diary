@@ -21,7 +21,6 @@ h1 {
     width: 70%;
     height: 300px;
     margin: 50px auto;
-    transition: grid-template-columns 0.3s ease;
 }
 
 .cells {
