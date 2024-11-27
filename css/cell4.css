@@ -30,11 +30,11 @@ p {
 
 .cards {
     display: flex;
+    gap: 1.5em;
 }
 
 ul {
     list-style: none;
-    margin-left: 15px;
 }
 
 .flip {
@@ -67,8 +67,6 @@ ul {
 }
 
 .back1, .back2, .back3 {
-    color: #fff;
-    background: #365902;
     transform: rotateY(180deg) translate3d(0, 0, 3px);
 }
 

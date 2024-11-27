@@ -1,0 +1,39 @@
+#wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+}
+
+.records {
+    width: 23%;
+}
+
+.record-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2em;
+    padding: 2em;
+
+    font-weight: 400;
+    font-size: 2em;
+    border: 1px solid #FF2A2A;
+}
+
+.record {
+    display: flex;
+    gap: 1.8em;
+}
+
+.images {
+    display: flex;
+}

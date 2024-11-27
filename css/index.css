@@ -23,9 +23,21 @@ h1 {
     margin: 50px auto;
 }
 
+a:link, a:hover,
+a:visited, a:active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+}
+
 .cells {
     flex: 1; /* 동일한 너비 */
-    height: 300px;
+    height: 200px;
+    padding: 30px;
     border: 1px solid #000;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -37,4 +49,16 @@ h1 {
 
 .cell-rows:hover .cells:not(:hover) {
     flex: 0.8; /* 너비 줄어듦 */
+}
+
+.cell-numb {
+    align-items: flex-start;
+    text-align: left;
+    font-size: 2.5em;
+}
+
+.cell-desc {
+    align-items: flex-end;
+    text-align: right;
+    font-size: 1.3em;
 }
