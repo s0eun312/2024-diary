@@ -9,12 +9,23 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 10em;
+    gap: 5em;
+}
+
+.txt {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 h1 {
     font-weight: 700;
     font-size: 3em;
+}
+
+p {
+    font-weight: 400;
+    font-size: 2em;
 }
 
 .cards {
