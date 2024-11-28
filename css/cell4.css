@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 5em;
+    gap: 3.8em;
 }
 
 .txt {
@@ -24,6 +24,12 @@ h1 {
 }
 
 p {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
     font-weight: 400;
     font-size: 2em;
 }

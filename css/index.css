@@ -1,7 +1,11 @@
 #wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 h1 {
@@ -36,8 +40,8 @@ a:visited, a:active {
 
 .cells {
     flex: 1; /* 동일한 너비 */
-    height: 200px;
-    padding: 30px;
+    height: 14vh;
+    padding: 1.8em;
     border: 1px solid #000;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -54,11 +58,11 @@ a:visited, a:active {
 .cell-numb {
     align-items: flex-start;
     text-align: left;
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 .cell-desc {
     align-items: flex-end;
     text-align: right;
-    font-size: 1.3em;
+    font-size: 1em;
 }
