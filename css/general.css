@@ -44,3 +44,10 @@ body {
 .backBtn:hover {
     content: url(../public/back-2.svg);
 }
+
+#wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

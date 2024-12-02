@@ -1,14 +1,16 @@
 #wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 7em;
+    gap: 3em;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 3em;
+    margin-bottom: 3vh;
 }
 
 /* Board */
@@ -19,13 +21,13 @@
     gap: 2em;
 
     width: 40%;
-    height: 60vh;
+    height: 50vh;
     border: .1em solid #818181;
 }
 
 .put {
-    width: 6.25vw;
-    height: 6.25vw;
+    width: 5.25vw;
+    height: 5.25vw;
     border-radius: 50%;
     border: .1em solid #818181;
 }
@@ -39,8 +41,15 @@
 }
 
 .sticker {
-    width: 5.21vw;
-    height: 5.21vw;
+    width: 4.21vw;
+    height: 4.21vw;
+    border-radius: 50%;
+    background-color: hotpink;
+}
+
+.sticker.goal {
+    width: 5.25vw;
+    height: 5.25vw;
     border-radius: 50%;
     background-color: hotpink;
 }
