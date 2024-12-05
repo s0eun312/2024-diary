@@ -56,11 +56,12 @@
         }
 
         .photo.scale {
+            border: 1em solid #c4f2c7;
             z-index: 10;
             transform: scale(1.6); /* 이미지 확대 */
         }
 
-        .dec {
+        .desc {
             padding: 0 .3em .1em .3em;
             font-weight: 400;
             font-size: 2.2em;
@@ -86,7 +87,7 @@
                 <img class="photo photo4" src="#">
                 <img class="photo photo5" src="#">
             </div>
-            <p class="dec">설명</p>
+            <p class="desc">1설명</p>
         </section>
     </div>
 
@@ -94,14 +95,14 @@
     <script>
         const photo = document.querySelectorAll(".photo");
         const photos = document.querySelector(".photos");
-        const dec = document.querySelector(".dec");
-        const photoDec = {
-            "photo1": "1 설명",
-            "photo2": "2 설명",
-            "photo3": "3 설명",
-            "photo4": "4 설명",
-            "photo5": "5 설명",
-        };
+        const desc = document.querySelector(".desc");
+        const photoDesc = [
+            '1설명',
+            '2설명',
+            '3설명',
+            '4설명',
+            '5설명'
+        ]
 
         photo[0].classList.add("scale");
 
@@ -110,9 +111,10 @@
                 // 각 사진들 크기 초기화 후 클릭한 사진만 확대
                 photo.forEach((p) => p.classList.remove("scale"));
                 img.classList.add("scale");
+
                 // 사진 설명 변경
                 const photoClass = img.classList[0];
-                dec.innerHTML = photoDec[photoClass];
+                desc.innerHTML = photoDesc[index];
             });
         });
     </script>

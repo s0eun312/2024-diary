@@ -13,17 +13,24 @@
             justify-content: center;
             text-align: center;
             gap: 3.8em;
+            padding: 4.2em;
+            border: .5em dashed rgb(179, 221, 240);
+            background-color: rgba(240, 248, 255, 0.632);
         }
 
         .txt {
             display: flex;
             flex-direction: column;
-            gap: 2em;
+            gap: 3em;
         }
 
         h1 {
             font-weight: 700;
             font-size: 3em;
+        }
+
+        span {
+            color: lightcoral;
         }
 
         p {
@@ -100,7 +107,7 @@
 
     <div id="wrap">
         <section class="txt">
-            <h1>Best 2024 Restaurants</h1>
+            <h1>Best <span>2024</span> Restaurants</h1>
             <p>Hover the Card !</p>
         </section>
 
@@ -137,10 +144,10 @@
         const content = document.querySelector("p");
         const cards = document.querySelectorAll("ul");
         const cardTxt = {
-            "card-1": "식당이름 | 위치 | 메뉴 <br /> Date.  With.",
-            "card-2": "식당이름 | 위치 | 메뉴 <br /> Date.  With.",
-            "card-3": "식당이름 | 위치 | 메뉴 <br /> Date.  With.",
-            "card-4": "식당이름 | 위치 | 메뉴 <br /> Date.  With.",
+            "card-1": "식당이름1 | 위치 | 메뉴 <br /> Date.  With.",
+            "card-2": "식당이름2 | 위치 | 메뉴 <br /> Date.  With.",
+            "card-3": "식당이름3 | 위치 | 메뉴 <br /> Date.  With.",
+            "card-4": "식당이름4 | 위치 | 메뉴 <br /> Date.  With.",
         };
 
         cards.forEach((card) => {
