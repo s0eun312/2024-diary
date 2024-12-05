@@ -5,9 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/cell5.css">
+    <style>
+        #wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3em;
+        }
+
+        h3 {
+            font-weight: 700;
+            font-size: 3em;
+            margin-bottom: 3vh;
+        }
+
+        /* Board */
+        .board {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+
+            width: 40%;
+            height: 50vh;
+            border: .1em solid #818181;
+        }
+
+        .put {
+            width: 5.25vw;
+            height: 5.25vw;
+            border-radius: 50%;
+            border: .1em solid #818181;
+        }
+
+        /* Stickers */
+        .stickers {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+        }
+
+        .sticker {
+            width: 4.21vw;
+            height: 4.21vw;
+            border-radius: 50%;
+            background-color: hotpink;
+        }
+
+        .sticker.goal {
+            width: 5.25vw;
+            height: 5.25vw;
+            border-radius: 50%;
+            background-color: hotpink;
+        }
+    </style>
 </head>
 <body>
+    <!-- Main -->
     <a class="backBtn" href="../index.html" title="돌아가기">
         <img src="../public/back-1.svg" alt="Back">
     </a>
@@ -33,6 +90,28 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
-    <script src="../js/cell5.js"></script>
+    <script>
+        $(() => {
+            // 스티커 정답처리
+            $(".sticker").draggable({ revert: "invalid" });
+
+            $(".put").each(function() {
+                // put number
+                const putClass = $(this).attr("class").match(/put\d/)[0];
+
+                $(this).droppable({
+                    // put과 스티커 숫자 맞추기
+                    accept: `.${putClass.replace('put', 'sticker')}`,
+                    drop: function(event, ui) {
+                        const $sticker = $(ui.draggable);
+                        const $put = $(this); // this : 이벤트가 일어나고 있는 요소
+
+                        // 스티커 위치 및 크기 조정
+                        $sticker.addClass('goal');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

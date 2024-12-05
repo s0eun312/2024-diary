@@ -5,15 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/cell3.css">
+    <style>
+        #wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            padding: 0 .5em;
+            margin-bottom: .5em;
+            font-weight: 700;
+            font-size: 3.8em;
+            font-style: italic;
+            border-radius: 2em;
+            background-color: rgba(127, 255, 212, 0.57);
+            box-shadow: 0 0 .3em rgba(148, 255, 219, 0.758);
+        }
+
+        span {
+            margin-bottom: 5.5vh;
+            font-weight: 400;
+            font-size: 2.5em;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3em;
+        }
+
+        .photos {
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5em;
+        }
+
+        .photo {
+            width: 13vw;
+            height: 13vw;
+            border: 1em solid #fff;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .photo.scale {
+            z-index: 10;
+            transform: scale(1.6); /* 이미지 확대 */
+        }
+
+        .dec {
+            padding: 0 .3em .1em .3em;
+            font-weight: 400;
+            font-size: 2.2em;
+            border-bottom: .1em solid #cecece;
+        }
+    </style>
 </head>
 <body>
+    <!-- Main -->
     <a class="backBtn" href="../index.html" title="돌아가기">
         <img src="../public/back-1.svg" alt="Back">
     </a>
     
     <div id="wrap">
-        
+        <h2>OSAKA 08/29 ~ 09/01</h2>
+        <span>친구들이랑 같이 일본 오사카 여행 사진집♪(´▽｀)</span>
+
+        <section class="gallery">
+            <div class="photos">
+                <img class="photo photo1" src="#">
+                <img class="photo photo2" src="#">
+                <img class="photo photo3" src="#">
+                <img class="photo photo4" src="#">
+                <img class="photo photo5" src="#">
+            </div>
+            <p class="dec">설명</p>
+        </section>
     </div>
+
+    <!-- Scripts -->
+    <script>
+        const photo = document.querySelectorAll(".photo");
+        const photos = document.querySelector(".photos");
+        const dec = document.querySelector(".dec");
+        const photoDec = {
+            "photo1": "1 설명",
+            "photo2": "2 설명",
+            "photo3": "3 설명",
+            "photo4": "4 설명",
+            "photo5": "5 설명",
+        };
+
+        photo[0].classList.add("scale");
+
+        photo.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                // 각 사진들 크기 초기화 후 클릭한 사진만 확대
+                photo.forEach((p) => p.classList.remove("scale"));
+                img.classList.add("scale");
+                // 사진 설명 변경
+                const photoClass = img.classList[0];
+                dec.innerHTML = photoDec[photoClass];
+            });
+        });
+    </script>
 </body>
 </html>
