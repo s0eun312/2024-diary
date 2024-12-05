@@ -12,7 +12,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 3em;
+            gap: 4em;
         }
 
         h3 {
@@ -24,20 +24,28 @@
         /* Board */
         .board {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 2em;
+            gap: 2.5em;
 
-            width: 40%;
-            height: 50vh;
-            border: .1em solid #818181;
+            width: 45%;
+            height: 40vh;
+            margin-bottom: 3vh;
+            background-color: #ffc23f;
+            border-radius: 2em
+        }
+
+        .row {
+            display: flex;
+            gap: 2.5em;
         }
 
         .put {
-            width: 5.25vw;
-            height: 5.25vw;
+            width: 5.8vw;
+            height: 5.8vw;
             border-radius: 50%;
-            border: .1em solid #818181;
+            background-color: rgb(255, 255, 255);
         }
 
         /* Stickers */
@@ -52,14 +60,14 @@
             width: 4.21vw;
             height: 4.21vw;
             border-radius: 50%;
-            background-color: hotpink;
+            background-color: rgb(255, 172, 205);
         }
 
         .sticker.goal {
-            width: 5.25vw;
-            height: 5.25vw;
+            width: 5.8vw;
+            height: 5.8vw;
             border-radius: 50%;
-            background-color: hotpink;
+            background-color: rgb(255, 172, 205);
         }
     </style>
 </head>
@@ -73,10 +81,20 @@
         <h3>Fill in the Activity Board</h3>
 
         <section class="board">
-            <div class="put put1"></div>
-            <div class="put put2"></div>
-            <div class="put put3"></div>
-            <div class="put put4"></div>
+            <div class="row">
+                <div class="put put1"></div>
+                <div class="put put2"></div>
+                <div class="put put3"></div>
+                <div class="put put4"></div>
+                <div class="put put5"></div>
+            </div>
+            <div class="row">
+                <div class="put put6"></div>
+                <div class="put put7"></div>
+                <div class="put put8"></div>
+                <div class="put put9"></div>
+                <div class="put put10"></div>
+            </div>
         </section>
 
         <section class="stickers">
@@ -84,6 +102,13 @@
             <div class="sticker sticker2"></div>
             <div class="sticker sticker3"></div>
             <div class="sticker sticker4"></div>
+            <div class="sticker sticker5"></div>
+
+            <div class="sticker sticker6"></div>
+            <div class="sticker sticker7"></div>
+            <div class="sticker sticker8"></div>
+            <div class="sticker sticker9"></div>
+            <div class="sticker sticker10"></div>
         </section>
     </div>
 
@@ -97,7 +122,9 @@
 
             $(".put").each(function() {
                 // put number
-                const putClass = $(this).attr("class").match(/put\d/)[0];
+                // /put\d/ : 1 자리 숫자 매칭
+                // /put\d+/ : 2 자리 숫자 매칭
+                const putClass = $(this).attr("class").match(/put\d+/)[0];
 
                 $(this).droppable({
                     // put과 스티커 숫자 맞추기

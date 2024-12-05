@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
-    <style></style>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <!-- Main -->
@@ -14,9 +19,21 @@
     </a>
     
     <div id="wrap">
+        <canvas id="canvas"></canvas>
     </div>
 
     <!-- Scripts -->
-    <script src="../js/cell3.js"></script>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 게임 설정
+        const gameWidth = canvas.width;
+        const gameHeight = canvas.height;
+
+        // 배경 색상
+        ctx.fillStyle = "#f7f7f7";
+        ctx.fillRect(0, 0, gameWidth, gameHeight);
+    </script>
 </body>
 </html>
