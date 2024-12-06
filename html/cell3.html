@@ -6,6 +6,29 @@
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
     <style>
+        .btns {
+            display: flex;
+            text-align: center;
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+
+        .btn {
+            width: 5vw;
+            height: 4vh;
+            font-weight: 400;
+            font-size: .8em;
+            background-color: #cbcbcb;
+            border: none;
+            border-radius: .5em;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #6b6b6b;
+            color: #fff;
+        }
+
         #canvas {
             border: .1em solid #cbcbcb;
             background-image: url('../public/canvas_bg.svg');
@@ -21,6 +44,10 @@
     </a>
     
     <div id="wrap">
+        <div class="btns">
+            <button class="btn start">시작하기</button>
+            <button class="btn reset">다시하기</button>
+        </div>
         <canvas id="canvas" width="1000" height="500"></canvas>
     </div>
 
@@ -40,14 +67,17 @@
             height : 60,
             draw() {
                 ctx.drawImage(img, this.x, this.y, this.width, this.height);
+            },
+            reset() {
+                this.x = 10;
+                this.y = 380;
             }
         };
-        img.addEventListener('load', () => {
-            rse.draw();
-        });
+        
 
-        // 점프 실행 X
-        var isJumping = false;
+        // 초기 상태
+        var jumping = false;
+        var frame = null;
 
         // 이동 애니메이션
         function move() {
@@ -56,18 +86,17 @@
                 cancelAnimationFrame(move);
             } else {
                 // 오른쪽 이동
-                requestAnimationFrame(move);
+                frame = requestAnimationFrame(move);
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 rse.x += 1.5;
                 rse.draw();
             }
         }
-        move();
 
         // 점프 애니메이션
         function jump() {
-            if (!isJumping) {
-                isJumping = true;
+            if (!jumping) {
+                jumping = true;
                 let jumpHeight = 130; // 점프 높이
                 let speed = 4; // 점프 속도
                 let gravity = 3; // 중력
@@ -87,7 +116,7 @@
                         } else {
                             // 초기값으로 돌아오면 점프 종료
                             rse.y = initialY;
-                            isJumping = false;
+                            jumping = false;
                             return;
                         }
                     }
@@ -106,6 +135,29 @@
             }
         });
 
+        const start = document.querySelector(".start");
+        const reset = document.querySelector(".reset");
+
+        // START
+        start.addEventListener('click', () => {
+            if (!frame) {
+                move();
+            }
+        });
+
+        // RESET
+        reset.addEventListener('click', () => {
+            cancelAnimationFrame(frame); // 애니메이션 중지
+            frame = null; // 초기화
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // 캐릭터 되돌리기
+            rse.reset(); 
+            rse.draw();
+        });
+
+        img.addEventListener('load', () => {
+            rse.draw();
+        });
     </script>
 </body>
 </html>
