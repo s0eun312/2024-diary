@@ -6,9 +6,11 @@
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
     <style>
-        canvas {
-            display: block;
-            margin: 0 auto;
+        #canvas {
+            border: .1em solid #cbcbcb;
+            background-image: url('../public/canvas_bg.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
@@ -19,21 +21,91 @@
     </a>
     
     <div id="wrap">
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" width="1000" height="500"></canvas>
     </div>
 
     <!-- Scripts -->
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
 
-        // 게임 설정
-        const gameWidth = canvas.width;
-        const gameHeight = canvas.height;
+        // 캐릭터 이미지
+        var img = new Image();
+        img.src = '../public/test.svg';
 
-        // 배경 색상
-        ctx.fillStyle = "#f7f7f7";
-        ctx.fillRect(0, 0, gameWidth, gameHeight);
+        var rse = {
+            x : 10,
+            y : 380,
+            width: 60,
+            height : 60,
+            draw() {
+                ctx.drawImage(img, this.x, this.y, this.width, this.height);
+            }
+        };
+        img.addEventListener('load', () => {
+            rse.draw();
+        });
+
+        // 점프 실행 X
+        var isJumping = false;
+
+        // 이동 애니메이션
+        function move() {
+            // 충돌 멈춤
+            if(rse.x >= canvas.width - rse.width) {
+                cancelAnimationFrame(move);
+            } else {
+                // 오른쪽 이동
+                requestAnimationFrame(move);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                rse.x += 1.5;
+                rse.draw();
+            }
+        }
+        move();
+
+        // 점프 애니메이션
+        function jump() {
+            if (!isJumping) {
+                isJumping = true;
+                let jumpHeight = 130; // 점프 높이
+                let speed = 4; // 점프 속도
+                let gravity = 3; // 중력
+                let initialY = rse.y; // 초기 Y값 저장
+
+                function jumpActive() {
+                    // 캐릭터가 점프 높이보다 낮고, 속도가 0보다 클 때
+                    if (rse.y > initialY - jumpHeight && speed > 0) {
+                        // Y 값을 속도만큼 줄이기: 위로 이동
+                        rse.y -= speed;
+                    } else {
+                        // 속도 < 0: 아래 이동
+                        speed = -gravity;
+                        // 캐릭터가 초기값보다 위 = 점프했을 때
+                        if (rse.y < initialY) {
+                            rse.y -= speed; // 아래로 내리기
+                        } else {
+                            // 초기값으로 돌아오면 점프 종료
+                            rse.y = initialY;
+                            isJumping = false;
+                            return;
+                        }
+                    }
+                    requestAnimationFrame(jumpActive);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    rse.draw();
+                }
+                jumpActive();
+            }
+        }
+
+        // 키보드 이벤트 추가
+        document.addEventListener('keydown', function (e) {
+            if (e.code === 'Space') {
+                jump();
+            }
+        });
+
     </script>
 </body>
 </html>
