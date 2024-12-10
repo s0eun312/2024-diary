@@ -39,6 +39,7 @@ body {
     left: 0;
     cursor: pointer;
     transition: 0.5s;
+    z-index: 100;
 }
 
 .backBtn:hover {

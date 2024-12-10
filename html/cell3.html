@@ -6,11 +6,36 @@
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
     <style>
+        h1 {
+            font-weight: 700;
+            font-size: 3em;
+            margin-bottom: .5em;
+            color: rgb(77, 70, 208);
+        }
+
+        .contents {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 1.5em;
+        }
+
+        .descs {
+            display: flex;
+            flex-direction: column;
+            gap: .2em;
+        }
+        .desc {
+            font-weight: 400;
+            font-size: 1.2em;
+            padding: 0 .5em .1em .5em;
+            border-bottom: .1em solid #6b6b6b;
+        }
+
         .btns {
             display: flex;
             text-align: center;
             gap: 1em;
-            margin-bottom: 1em;
         }
 
         .btn {
@@ -44,10 +69,19 @@
     </a>
     
     <div id="wrap">
-        <div class="btns">
-            <button class="btn start">시작하기</button>
-            <button class="btn reset">다시하기</button>
-        </div>
+        <h1>살 빼기 시작이다!!</h1>
+        <section class="contents">
+            <div class="descs">
+                <P class="desc">살이 너무 많이 쪄버렸다...ㅜㅡㅜ~!</P>
+                <P class="desc">게임 속 음식의 유혹을 피해 살을 빼보도록 하자!! 아자아자( •̀ ω •́ )✧</P>
+            </div>
+    
+            <div class="btns">
+                <button class="btn start">시작하기</button>
+                <button class="btn reset">다시하기</button>
+            </div>
+        </section>
+
         <canvas id="canvas" width="1000" height="500"></canvas>
     </div>
 
@@ -58,19 +92,19 @@
 
         // 캐릭터 이미지
         var img = new Image();
-        img.src = '../public/test.svg';
+        img.src = '../public/pig.png';
 
         var rse = {
             x : 10,
-            y : 380,
-            width: 60,
-            height : 60,
+            y : 345,
+            width: 100,
+            height : 100,
             draw() {
                 ctx.drawImage(img, this.x, this.y, this.width, this.height);
             },
             reset() {
                 this.x = 10;
-                this.y = 380;
+                this.y = 345;
             }
         };
         
@@ -84,6 +118,14 @@
             // 충돌 멈춤
             if(rse.x >= canvas.width - rse.width) {
                 cancelAnimationFrame(move);
+                frame = null;
+
+                // 캐릭터 이미지 변경
+                img.src = '../public/puppy.png';
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    rse.draw();
+                };
             } else {
                 // 오른쪽 이동
                 frame = requestAnimationFrame(move);
@@ -149,10 +191,15 @@
         reset.addEventListener('click', () => {
             cancelAnimationFrame(frame); // 애니메이션 중지
             frame = null; // 초기화
+            jumping = false;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             // 캐릭터 되돌리기
-            rse.reset(); 
-            rse.draw();
+            img.src = '../public/pig.png';
+            img.onload = () => {
+                rse.reset();
+                rse.draw();
+            };
         });
 
         img.addEventListener('load', () => {

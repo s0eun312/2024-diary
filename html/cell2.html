@@ -8,6 +8,7 @@
     <style>
         #wrap {
             width: 100%;
+            margin-top: 2em;
         }
 
         .toggle-title {
@@ -16,7 +17,6 @@
             align-items: center;
             justify-content: center;
             gap: 1.3em;
-            margin-bottom: 5em;
         }
 
         .title-h1 {
@@ -54,9 +54,15 @@
         }
 
         .cell2-img {
-            width: 28.2813vw;
-            height: 50.278vh;
-            border: 0.0521vw solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mode_img {
+            padding-top: 3.5em;
+            width: 35vw;
+            height: 35vw;
         }
 
         /* hidden */
@@ -69,7 +75,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8.5417vw;
+            gap: 6vw;
         }
 
         /* Lists */
@@ -259,7 +265,7 @@
 <body>
     <!-- Main -->
     <a class="backBtn" href="../index.html" title="돌아가기">
-        <img src="../public/back-1.svg" alt="Back">
+        <img class="back-img" src="../public/back-1.svg" alt="Back">
     </a>
     
     <div id="wrap">
@@ -321,7 +327,7 @@
             </section>
 
             <section class="cell2-img school-img">
-                <img src="#">
+                <img class="mode_img" src="../public/school-mode.PNG">
             </section>
 
             <section class="timetable">
@@ -361,7 +367,7 @@
             </section>
 
             <section class="cell2-img job-img">
-                <img src="#">
+                <img class="mode_img" src="../public/job-mode.PNG">
             </section>
 
             <section class="money"></section>
