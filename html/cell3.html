@@ -95,19 +95,65 @@
         img.src = '../public/pig.png';
 
         var rse = {
-            x : 10,
-            y : 345,
-            width: 100,
-            height : 100,
+            x : 0,
+            y : 325,
+            size : 120,
             draw() {
-                ctx.drawImage(img, this.x, this.y, this.width, this.height);
+                ctx.drawImage(img, this.x, this.y, this.size, this.size);
             },
             reset() {
-                this.x = 10;
-                this.y = 345;
+                this.x = 0;
+                this.y = 325;
             }
         };
-        
+
+        // 장애물 이미지
+        var chicken = new Image();
+        chicken.src = '../public/chicken.png';
+
+        var pizza = new Image();
+        pizza.src = '../public/pizza.png';
+
+        // 장애물 객체
+        var obstacles = [
+            {
+                x : 320,
+                y : 370,
+                size : 70,
+                img : chicken,
+                draw() {
+                    ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
+                }
+            },
+            {
+                x : 600,
+                y : 370,
+                size : 70,
+                img : pizza,
+                draw() {
+                    ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
+                }
+            }
+        ];
+
+        // 장애물 충돌 감지
+        function collision() {
+            for (let obstacle of obstacles) {
+                // 충돌 영역 축소를 위한 여백값 지정
+                let buffer = 30;
+                if (
+                    // 캐릭터 양쪽 끝이 장애물 양쪽 끝에 닿으면
+                    rse.x < obstacle.x + obstacle.size - buffer &&
+                    rse.x + rse.size > obstacle.x + buffer &&
+                    rse.y < obstacle.y + obstacle.size - buffer &&
+                    rse.y + rse.size > obstacle.y + buffer
+                ) {
+                    // 부딪히면 충돌
+                    return true;
+                }
+            }
+            return false;
+        }
 
         // 초기 상태
         var jumping = false;
@@ -115,23 +161,37 @@
 
         // 이동 애니메이션
         function move() {
-            // 충돌 멈춤
-            if(rse.x >= canvas.width - rse.width) {
-                cancelAnimationFrame(move);
+            // 장애물 충돌 -> 이동 멈춤
+            if (collision()) {
+                cancelAnimationFrame(frame);
                 frame = null;
-
-                // 캐릭터 이미지 변경
-                img.src = '../public/puppy.png';
-                img.onload = () => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    rse.draw();
-                };
+                alert("음식의 벽 앞에 무너져 버렸다...OTL");
+                return;
             } else {
-                // 오른쪽 이동
-                frame = requestAnimationFrame(move);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                rse.x += 1.5;
-                rse.draw();
+                // Finish (목표지점 도달)
+                if(rse.x >= canvas.width - rse.size) {
+                    cancelAnimationFrame(move);
+                    frame = null;
+
+                    // 캐릭터 이미지 변경
+                    img.src = '../public/puppy.png';
+                    img.onload = () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        rse.draw();
+                        for (let obstacle of obstacles) {
+                            obstacle.draw();
+                        }
+                    };
+                } else {
+                    // 오른쪽 이동
+                    frame = requestAnimationFrame(move);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    rse.x += 1.5;
+                    rse.draw();
+                    for (let obstacle of obstacles) {
+                        obstacle.draw();
+                    }
+                }
             }
         }
 
@@ -139,9 +199,9 @@
         function jump() {
             if (!jumping) {
                 jumping = true;
-                let jumpHeight = 130; // 점프 높이
-                let speed = 4; // 점프 속도
-                let gravity = 3; // 중력
+                let jumpHeight = 200; // 점프 높이
+                let speed = 5; // 점프 속도
+                let gravity = 2; // 중력
                 let initialY = rse.y; // 초기 Y값 저장
 
                 function jumpActive() {
@@ -165,6 +225,9 @@
                     requestAnimationFrame(jumpActive);
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     rse.draw();
+                    for (let obstacle of obstacles) {
+                        obstacle.draw();
+                    }
                 }
                 jumpActive();
             }
@@ -204,6 +267,21 @@
 
         img.addEventListener('load', () => {
             rse.draw();
+            for (let obstacle of obstacles) {
+                obstacle.draw();
+            }
+        });
+
+        chicken.addEventListener('load', () => {
+            for (let obstacle of obstacles) {
+                obstacle.draw();
+            }
+        });
+
+        pizza.addEventListener('load', () => {
+            for (let obstacle of obstacles) {
+                obstacle.draw();
+            }
         });
     </script>
 </body>

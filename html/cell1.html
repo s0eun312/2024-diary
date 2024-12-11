@@ -5,18 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
-    <style></style>
+    <style>
+        .bg {
+            position: relative;
+            z-index: -1;
+            cursor: none;
+        }
+        .bg img {
+            position: absolute;
+            width: 33vw;
+            height: auto;
+            animation:
+                blink 1.5s ease-in-out infinite,
+                rotate 1.8s ease-in-out infinite;
+            cursor: default;
+        }
+        .green {
+            top: 10vh;
+            left: 4.3vw;
+        }
+        .yellow {
+            top: 45vh;
+            left: 31vw;
+        }
+        .pink {
+            top: 7vh;
+            right: 4vw;
+            transform: rotate(130deg);
+        }
+
+        #wrap {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #wrap img {
+            height: auto;
+        }
+
+        .img-1 {
+            width: 27%;
+            margin: 13em 0 0 -2em;
+            animation: scale 2s ease-in-out infinite;
+        }
+
+        .img-2 {
+            width: 15%;
+            margin: -30em 0 0 3em;
+            animation: slideY 3s ease-in-out infinite;
+        }
+
+        .img-3 {
+            width: 25%;
+            margin: 37em 0 0 -5em;
+            animation: slideX 3s ease-in-out infinite;
+        }
+
+        .img-4 {
+            width: 23%;
+            margin: -20em 0 0 -10em;
+            animation: scale 4s ease-in-out infinite;
+        }
+
+        /* Keyframes */
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .6; }
+        }
+
+        @keyframes slideX {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+
+        @keyframes slideY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-40px); }
+        }
+
+        @keyframes scale {
+            0%, 100% { transform: scale(.9); }
+            50% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
     <!-- Main -->
     <a class="backBtn" href="../index.html" title="돌아가기">
         <img src="../public/back-1.svg" alt="Back">
     </a>
+
+    <div class="bg">
+        <img class="green" src="../public/green.svg">
+        <img class="yellow" src="../public/yellow.svg">
+        <img class="pink" src="../public/pink.svg">
+    </div>
     
     <div id="wrap">
+        <img class="img-1" src="../public/cell1-1.png">
+        <img class="img-2" src="../public/cell1-2.png">
+        <img class="img-3" src="../public/cell1-3.png">
+        <img class="img-4" src="../public/cell1-4.png">
     </div>
-
-    <!-- Scripts -->
-    <script src="../js/cell1.js"></script>
 </body>
 </html>

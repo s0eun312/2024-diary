@@ -6,6 +6,30 @@
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="./css/general.css">
     <style>
+        .bg {
+            position: relative;
+            z-index: -1;
+            cursor: none;
+        }
+        .bg img {
+            position: absolute;
+            width: 30vw;
+            height: auto;
+        }
+        .pink {
+            top: 10vh;
+            left: 3vw;
+        }
+        .yellow {
+            top: 45vh;
+            left: 35vw;
+        }
+        .green {
+            top: 5vh;
+            right: 8vw;
+            transform: rotate(130deg);
+        }
+
         #wrap {
             width: 100%;
             overflow: hidden;
@@ -24,7 +48,7 @@
             margin-left: -11vw;
             font-size: 5em;
             font-weight: 700;
-            background-color: #19914751;
+            background-color: #429bca51;
         }
 
         .desc {
@@ -36,7 +60,7 @@
         }
 
         span {
-            color: crimson;
+            color: rgb(56, 50, 215);
         }
 
         .cell-rows {
@@ -64,14 +88,14 @@
             height: 14vh;
             padding: 1.8em;
             border: 1px solid #000;
-            background-color: #f1f1f1;
+            background-color: #f1f1f192;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .cells:hover {
             flex: 2; /* 너비 넓어짐 */
-            background-color: #e0e0e0;
+            background-color: #e0e0e0c6;
         }
 
         .cell-rows:hover .cells:not(:hover) {
@@ -92,6 +116,12 @@
     </style>
 </head>
 <body>
+    <div class="bg">
+        <img class="pink" src="./public/pink.svg">
+        <img class="yellow" src="./public/yellow.svg">
+        <img class="green" src="./public/green.svg">
+    </div>
+
     <div id="wrap">
         <div class="title">
             <h1>RYU SE's<span>&nbsp; 2024</span></h1>
