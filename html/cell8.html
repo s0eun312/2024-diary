@@ -64,7 +64,7 @@
         .desc {
             padding: 0 .3em .1em .3em;
             font-weight: 400;
-            font-size: 2.2em;
+            font-size: 1.7em;
             border-bottom: .1em solid #cecece;
         }
     </style>
@@ -81,13 +81,15 @@
 
         <section class="gallery">
             <div class="photos">
-                <img class="photo photo1" src="#">
-                <img class="photo photo2" src="#">
-                <img class="photo photo3" src="#">
-                <img class="photo photo4" src="#">
-                <img class="photo photo5" src="#">
+                <img class="photo photo1" src="../public/osaka1.jpg">
+                <img class="photo photo2" src="../public/osaka2.jpg">
+                <img class="photo photo3" src="../public/osaka3.jpg">
+                <img class="photo photo4" src="../public/osaka4.jpg">
+                <img class="photo photo5" src="../public/osaka5.jpg">
             </div>
-            <p class="desc">1설명</p>
+            <p class="desc">
+                내 룸메이트 옘이랑 매일 저녁마다 편의점 먹방했다!
+            </p>
         </section>
     </div>
 
@@ -97,11 +99,11 @@
         const photos = document.querySelector(".photos");
         const desc = document.querySelector(".desc");
         const photoDesc = [
-            '1설명',
-            '2설명',
-            '3설명',
-            '4설명',
-            '5설명'
+            '내 룸메이트 옘이랑 매일 저녁마다 편의점 먹방했다!',
+            '다같이 유니클로 매장 가서 UT 제작 완료 d(0w0)b',
+            '무한리필 야키니꾸!! 고기 잔뜩 먹고 뚱띠됐다...!',
+            '초코비 너무 좋아ㅜㅡㅜ 그래서 98엔 초코비 혼자 20개 사왔당 헤헤 :)',
+            '새벽 1시에 호텔 앞 산책하는데 피카츄 자판기가 귀여워서 *><*'
         ]
 
         photo[0].classList.add("scale");

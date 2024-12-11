@@ -5,7 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RYU's 2024</title>
     <link rel="stylesheet" href="../css/general.css">
-    <style></style>
+    <style>
+        #wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.3em;
+        }
+
+        .clickNum {
+            font-size: 3em;
+        }
+
+        .cake {
+            width: 30vw;
+            height: auto;
+            border-radius: 2em;
+        }
+
+        .clickBtn {
+            width: 10vw;
+            height: 5vh;
+            background-color: #ff546b;
+            border: none;
+            border-radius: 1em;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        .clickBtn:hover {
+            background-color: #f51e3b;
+        }
+        .clickBtn:active {
+            background-color: #9f0015;
+        }
+    </style>
 </head>
 <body>
     <!-- Main -->
@@ -14,9 +49,39 @@
     </a>
     
     <div id="wrap">
+        <p class="clickNum">0</p>
+        <img class="cake" src="../public/clicker-start.PNG">
+        <button class="clickBtn">CLICK</button>
     </div>
 
     <!-- Scripts -->
-    <script src="../js/cell9.js"></script>
+    <script>
+        const clickNum = document.querySelector(".clickNum");
+        const img = document.querySelector(".cake");
+        const clickBtn = document.querySelector(".clickBtn");
+
+        // 클릭 수 설정(초기값 : 0)
+        let num = 0;
+
+        clickBtn.addEventListener("click", () => {
+            // 클릭 수 22까지만 이벤트 실행
+            if (num >= 22) return;
+
+            // click num add
+            num++;
+            clickNum.innerHTML = num;
+
+            if (num === 22) {
+                // 이미지 변경
+                img.style.transition = "opacity 0.5s ease";
+                img.style.opacity = 0;
+
+                setTimeout(() => {
+                    img.src = "../public/clicker-end.PNG";
+                    img.style.opacity = 1;
+                }, 200);
+            }
+        });
+    </script>
 </body>
 </html>
