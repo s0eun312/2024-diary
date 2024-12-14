@@ -252,36 +252,30 @@
 
         // RESET
         reset.addEventListener('click', () => {
-            cancelAnimationFrame(frame); // 애니메이션 중지
-            frame = null; // 초기화
+            // 상태 및 캔버스 초기화
+            cancelAnimationFrame(frame);
+            frame = null;
             jumping = false;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+            
             // 캐릭터 되돌리기
             img.src = '../public/pig.PNG';
             img.onload = () => {
                 rse.reset();
                 rse.draw();
             };
-        });
-
-        img.addEventListener('load', () => {
-            rse.draw();
             for (let obstacle of obstacles) {
                 obstacle.draw();
             }
+            render();
         });
 
-        chicken.addEventListener('load', () => {
-            for (let obstacle of obstacles) {
-                obstacle.draw();
-            }
-        });
-
-        pizza.addEventListener('load', () => {
-            for (let obstacle of obstacles) {
-                obstacle.draw();
-            }
+        Promise.all([
+            new Promise(resolve => (img.onload = resolve)),
+            new Promise(resolve => (chicken.onload = resolve)),
+            new Promise(resolve => (pizza.onload = resolve))
+        ]).then(() => {
+            render();
         });
     </script>
 </body>
